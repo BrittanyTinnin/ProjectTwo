@@ -1,6 +1,8 @@
 package com.revature.model;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,7 +11,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -46,9 +47,8 @@ public class User {
 	@Column(name = "date")
 	private Timestamp date;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name = "post_id") //foregin key
-	private Post post;
+//	@OneToMany(mappedBy = "post_id", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+//	private Set<Post> posts = new HashSet<>();
 	
 	public User() {
 		super();
@@ -56,7 +56,7 @@ public class User {
 	}
 
 	public User(int id, String email, String username, String password, String breed, int age, String gender,
-			Timestamp birthday, Timestamp date, Post post) {
+			Timestamp birthday, Timestamp date) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -67,11 +67,10 @@ public class User {
 		this.gender = gender;
 		this.birthday = birthday;
 		this.date = date;
-		this.post = post;
 	}
 
 	public User(String email, String username, String password, String breed, int age, String gender,
-			Timestamp birthday, Timestamp date, Post post) {
+			Timestamp birthday, Timestamp date) {
 		super();
 		this.email = email;
 		this.username = username;
@@ -81,7 +80,6 @@ public class User {
 		this.gender = gender;
 		this.birthday = birthday;
 		this.date = date;
-		this.post = post;
 	}
 
 	public int getId() {
@@ -156,14 +154,6 @@ public class User {
 		this.date = date;
 	}
 
-	public Post getPost() {
-		return post;
-	}
-
-	public void setPost(Post post) {
-		this.post = post;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -176,7 +166,6 @@ public class User {
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((post == null) ? 0 : post.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -224,11 +213,6 @@ public class User {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (post == null) {
-			if (other.post != null)
-				return false;
-		} else if (!post.equals(other.post))
-			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;
@@ -240,10 +224,9 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password + ", breed="
-				+ breed + ", age=" + age + ", gender=" + gender + ", birthday=" + birthday + ", date=" + date
-				+ ", post=" + post + "]";
+				+ breed + ", age=" + age + ", gender=" + gender + ", birthday=" + birthday + ", date=" + date + "]";
 	}
 
 	
-	
+
 }

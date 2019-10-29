@@ -1,25 +1,21 @@
 <!DOCTYPE hibernate-configuration PUBLIC
-	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration>
 	<session-factory>
-		<property name="hibernate.connection.url">
-			jdbc:postgresql://postgresql-class.cks98gmxels6.us-west-1.rds.amazonaws.com:5432/project_two
-		</property>
-		<property name="hibernate.connection.username">
-			ptwo_user
-		</property>
-		<property name="hibernate.connection.password">
-			password
-		</property>
-		<property name="hibernate.connection.Dialect">
-			org.hibernate.dialect.PostgreSQLDialect
-		</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://postgresql-database-1.c2ilx44fjskp.us-east-2.rds.amazonaws.com:5432/project_two</property>
+		<property name="hibernate.connection.username">ptwo_user</property>
+		<property name="hibernate.connection.password">password</property>
+		<property name="hibernate.connection.Dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-		<property name="hibernate.connection.pool_size">10</property>
+		<property name="hibernate.connection.pool_size">5</property>
 		<property name="hibernate.connection.show_sql">true</property>
 		<property name="hibernate.connection.format_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
+
+		<mapping class="com.revature.model.User" />
+		<mapping class="com.revature.model.Post" />
+		<mapping class="com.revature.model.Photo" />
 	</session-factory>
 </hibernate-configuration>

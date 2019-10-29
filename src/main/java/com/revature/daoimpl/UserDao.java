@@ -21,6 +21,7 @@ public class UserDao implements GenericDao<User> {
 	@Override
 	public void create(User user) {
 		Session ses = HibernateUtil.getSession();
+		System.out.println("line 24 of create");
 		Transaction t = ses.beginTransaction();
 		ses.persist(user);
 		t.commit();
