@@ -25,17 +25,14 @@ public class User {
 	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "firstname")
-	private String firstname;
-	
-	@Column(name = "lastname")
-	private String lastname;
-	
 	@Column(name = "username")
 	private String username;
 	
 	@Column(name = "user_password")
 	private String password;
+	
+	@Column(name = "breed")
+	private String breed;
 	
 	@Column(name = "age")
 	private int age;
@@ -58,15 +55,14 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int id, String email, String firstname, String lastname, String username, String password, int age,
-			String gender, Timestamp birthday, Timestamp date, Post post) {
+	public User(int id, String email, String username, String password, String breed, int age, String gender,
+			Timestamp birthday, Timestamp date, Post post) {
 		super();
 		this.id = id;
 		this.email = email;
-		this.firstname = firstname;
-		this.lastname = lastname;
 		this.username = username;
 		this.password = password;
+		this.breed = breed;
 		this.age = age;
 		this.gender = gender;
 		this.birthday = birthday;
@@ -74,14 +70,13 @@ public class User {
 		this.post = post;
 	}
 
-	public User(String email, String firstname, String lastname, String username, String password, int age,
-			String gender, Timestamp birthday, Timestamp date, Post post) {
+	public User(String email, String username, String password, String breed, int age, String gender,
+			Timestamp birthday, Timestamp date, Post post) {
 		super();
 		this.email = email;
-		this.firstname = firstname;
-		this.lastname = lastname;
 		this.username = username;
 		this.password = password;
+		this.breed = breed;
 		this.age = age;
 		this.gender = gender;
 		this.birthday = birthday;
@@ -105,22 +100,6 @@ public class User {
 		this.email = email;
 	}
 
-	public String getFirstname() {
-		return firstname;
-	}
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-
 	public String getUsername() {
 		return username;
 	}
@@ -135,6 +114,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getBreed() {
+		return breed;
+	}
+
+	public void setBreed(String breed) {
+		this.breed = breed;
 	}
 
 	public int getAge() {
@@ -183,12 +170,11 @@ public class User {
 		int result = 1;
 		result = prime * result + age;
 		result = prime * result + ((birthday == null) ? 0 : birthday.hashCode());
+		result = prime * result + ((breed == null) ? 0 : breed.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((post == null) ? 0 : post.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
@@ -211,6 +197,11 @@ public class User {
 				return false;
 		} else if (!birthday.equals(other.birthday))
 			return false;
+		if (breed == null) {
+			if (other.breed != null)
+				return false;
+		} else if (!breed.equals(other.breed))
+			return false;
 		if (date == null) {
 			if (other.date != null)
 				return false;
@@ -221,22 +212,12 @@ public class User {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (firstname == null) {
-			if (other.firstname != null)
-				return false;
-		} else if (!firstname.equals(other.firstname))
-			return false;
 		if (gender == null) {
 			if (other.gender != null)
 				return false;
 		} else if (!gender.equals(other.gender))
 			return false;
 		if (id != other.id)
-			return false;
-		if (lastname == null) {
-			if (other.lastname != null)
-				return false;
-		} else if (!lastname.equals(other.lastname))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -258,10 +239,11 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", firstname=" + firstname + ", lastname=" + lastname
-				+ ", username=" + username + ", password=" + password + ", age=" + age + ", gender=" + gender
-				+ ", birthday=" + birthday + ", date=" + date + ", post=" + post + "]";
+		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password + ", breed="
+				+ breed + ", age=" + age + ", gender=" + gender + ", birthday=" + birthday + ", date=" + date
+				+ ", post=" + post + "]";
 	}
 
+	
 	
 }
