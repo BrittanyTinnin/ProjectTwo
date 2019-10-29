@@ -3,41 +3,40 @@ package com.revature.daoimpl;
 import java.util.List;
 
 import com.revature.dao.GenericDao;
-import com.revature.model.User;
+import com.revature.model.Photo;
 
-public class UserDao implements GenericDao<User> {
+public class PhotoDao implements GenericDao<Photo> {
 
 	@Override
-	public List<User> getAll() {
+	public List<Photo> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void create(User t) {
+	public void create(Photo t) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void update(User t, String[] params) {
+	public void update(Photo t, String[] params) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void findBy(User t) {
+	public void findBy(Photo t) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(User t) {
+	public void delete(Photo t) {
 		// TODO Auto-generated method stub
 		
 	}
 
 
 
-	
 }
