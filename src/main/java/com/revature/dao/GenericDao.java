@@ -8,9 +8,11 @@ public interface GenericDao<T> {
 	
 	void create(T t);
 		
-	void update(T t, String[] params);
+	void update(T t);
 	
-	void findBy(T t);
+	void updateInfo(T t);
+	
+	T findBy(String t);
 	
 	void delete(T t);
 }

@@ -21,26 +21,37 @@ public class PostDao implements GenericDao<Post> {
 	@Override
 	public void create(Post post) {
 		Session ses = HibernateUtil.getSession();
-		System.out.println("line 24 of create");
 		Transaction t = ses.beginTransaction();
 		ses.persist(post);
 		t.commit();
 	}
 
 	@Override
-	public void update(Post t, String[] params) {
+	public void update(Post t) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void findBy(Post t) {
-		// TODO Auto-generated method stub
-		
-	}
+//	@Override
+//	public void findBy(Post t) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 	@Override
 	public void delete(Post t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Post findBy(String t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateInfo(Post t) {
 		// TODO Auto-generated method stub
 		
 	}

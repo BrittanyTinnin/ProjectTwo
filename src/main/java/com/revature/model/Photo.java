@@ -18,7 +18,6 @@ import javax.persistence.Table;
 @Table(name="photos")
 public class Photo {
 
-	
 	@Id
 	@Column(name = "photo_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -32,7 +31,7 @@ public class Photo {
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
-	private User user;
+	private User puser;
 
 	public Photo() {
 		super();
@@ -44,14 +43,14 @@ public class Photo {
 		this.id = id;
 		this.date = date;
 		this.url = url;
-		this.user = user;
+		this.puser = user;
 	}
 
 	public Photo(Timestamp date, String url, User user) {
 		super();
 		this.date = date;
 		this.url = url;
-		this.user = user;
+		this.puser = user;
 	}
 
 	public int getId() {
@@ -79,11 +78,11 @@ public class Photo {
 	}
 
 	public User getUser() {
-		return user;
+		return puser;
 	}
 
 	public void setUser(User user) {
-		this.user = user;
+		this.puser = user;
 	}
 
 	@Override
@@ -93,7 +92,7 @@ public class Photo {
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + ((puser == null) ? 0 : puser.hashCode());
 		return result;
 	}
 
@@ -118,17 +117,17 @@ public class Photo {
 				return false;
 		} else if (!url.equals(other.url))
 			return false;
-		if (user == null) {
-			if (other.user != null)
+		if (puser == null) {
+			if (other.puser != null)
 				return false;
-		} else if (!user.equals(other.user))
+		} else if (!puser.equals(other.puser))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Photo [id=" + id + ", date=" + date + ", url=" + url + ", user=" + user + "]";
+		return "Photo [id=" + id + ", date=" + date + ", url=" + url + ", user=" + puser + "]";
 	}
 
 }

@@ -49,12 +49,10 @@ public class User {
 	@Column(name = "date")
 	private Timestamp date;
 	
-	@Column(name = "posts")
 	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private Set<Post> posts = new HashSet<>();
 
-	@Column(name = "photos")
-	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "puser", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Photo> photos = new ArrayList<>();
 	
 	public User() {
@@ -172,12 +170,19 @@ public class User {
 		return posts;
 	}
 
-
-
 	public void setPosts(Set<Post> posts) {
 		this.posts = posts;
 	}
+	
+	
+	public List<Photo> getPhotos() {
+		return photos;
+	}
 
+
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
+	}
 
 
 	@Override
