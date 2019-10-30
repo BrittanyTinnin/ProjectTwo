@@ -1,7 +1,9 @@
 package com.revature.model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -47,16 +49,22 @@ public class User {
 	@Column(name = "date")
 	private Timestamp date;
 	
-//	@OneToMany(mappedBy = "post_id", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-//	private Set<Post> posts = new HashSet<>();
+	@Column(name = "posts")
+	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private Set<Post> posts = new HashSet<>();
+
+	@Column(name = "photos")
+	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Photo> photos = new ArrayList<>();
 	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public User(int id, String email, String username, String password, String breed, int age, String gender,
-			Timestamp birthday, Timestamp date) {
+			Timestamp birthday, Timestamp date, Set<Post> posts, List<Photo> photos) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -67,10 +75,12 @@ public class User {
 		this.gender = gender;
 		this.birthday = birthday;
 		this.date = date;
+		this.posts = posts;
+		this.photos = photos;
 	}
 
 	public User(String email, String username, String password, String breed, int age, String gender,
-			Timestamp birthday, Timestamp date) {
+			Timestamp birthday, Timestamp date, Set<Post> posts, List<Photo> photos) {
 		super();
 		this.email = email;
 		this.username = username;
@@ -80,7 +90,11 @@ public class User {
 		this.gender = gender;
 		this.birthday = birthday;
 		this.date = date;
+		this.posts = posts;
+		this.photos = photos;
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -154,6 +168,18 @@ public class User {
 		this.date = date;
 	}
 
+	public Set<Post> getPosts() {
+		return posts;
+	}
+
+
+
+	public void setPosts(Set<Post> posts) {
+		this.posts = posts;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -226,7 +252,9 @@ public class User {
 		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password + ", breed="
 				+ breed + ", age=" + age + ", gender=" + gender + ", birthday=" + birthday + ", date=" + date + "]";
 	}
-
+	
+	
 	
 
+	
 }

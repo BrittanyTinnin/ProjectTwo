@@ -6,8 +6,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,6 +20,7 @@ public class Post {
 	
 	@Id
 	@Column(name = "post_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
 	@Column(name = "date")
@@ -25,34 +29,28 @@ public class Post {
 	@Column(name = "content")
 	private String content;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
-	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "photo_id")
-	private Photo photo;
 
 	public Post() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Post(int id, Timestamp date, String content, User user, Photo photo) {
+	public Post(int id, Timestamp date, String content, User user) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.content = content;
 		this.user = user;
-		this.photo = photo;
 	}
 
-	public Post(Timestamp date, String content, User user, Photo photo) {
+	public Post(Timestamp date, String content, User user) {
 		super();
 		this.date = date;
 		this.content = content;
 		this.user = user;
-		this.photo = photo;
 	}
 
 	public int getId() {
@@ -87,14 +85,6 @@ public class Post {
 		this.user = user;
 	}
 
-	public Photo getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(Photo photo) {
-		this.photo = photo;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -102,7 +92,6 @@ public class Post {
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((photo == null) ? 0 : photo.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
@@ -128,11 +117,6 @@ public class Post {
 			return false;
 		if (id != other.id)
 			return false;
-		if (photo == null) {
-			if (other.photo != null)
-				return false;
-		} else if (!photo.equals(other.photo))
-			return false;
 		if (user == null) {
 			if (other.user != null)
 				return false;
@@ -143,8 +127,7 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", date=" + date + ", content=" + content + ", user=" + user + ", photo=" + photo
-				+ "]";
+		return "Post [id=" + id + ", date=" + date + ", content=" + content + ", user=" + user + "]";
 	}
-	
+
 }
