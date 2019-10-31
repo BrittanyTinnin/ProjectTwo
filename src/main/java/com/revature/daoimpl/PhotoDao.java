@@ -7,23 +7,23 @@ import org.hibernate.Transaction;
 
 import com.revature.dao.GenericDao;
 import com.revature.model.Photo;
-import com.revature.util.HibernateUtil;
 
 public class PhotoDao implements GenericDao<Photo> {
 
 	@Override
 	public List<Photo> getAll() {
-		Session ses = HibernateUtil.getSession();
-		String hql = "from Photo";
-		return ses.createQuery(hql).list();
+//		Session ses = HibernateUtil.getSession();
+//		String hql = "from Photo";
+//		return ses.createQuery(hql).list();
+		return null;
 	}
 
 	@Override
 	public void create(Photo photo) {
-		Session ses = HibernateUtil.getSession();
-		Transaction t = ses.beginTransaction();
-		ses.persist(photo);
-		t.commit();
+//		Session ses = HibernateUtil.getSession();
+//		Transaction t = ses.beginTransaction();
+//		ses.persist(photo);
+//		t.commit();
 		
 	}
 

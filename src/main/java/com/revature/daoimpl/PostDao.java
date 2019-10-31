@@ -7,23 +7,23 @@ import org.hibernate.Transaction;
 
 import com.revature.dao.GenericDao;
 import com.revature.model.Post;
-import com.revature.util.HibernateUtil;
 
 public class PostDao implements GenericDao<Post> {
 
 	@Override
 	public List<Post> getAll() {
-		Session ses = HibernateUtil.getSession();
-		String hql = "from Post";
-		return ses.createQuery(hql).list();
+//		Session ses = HibernateUtil.getSession();
+//		String hql = "from Post";
+//		return ses.createQuery(hql).list();
+		return null;
 	}
 
 	@Override
 	public void create(Post post) {
-		Session ses = HibernateUtil.getSession();
-		Transaction t = ses.beginTransaction();
-		ses.persist(post);
-		t.commit();
+//		Session ses = HibernateUtil.getSession();
+//		Transaction t = ses.beginTransaction();
+//		ses.persist(post);
+//		t.commit();
 	}
 
 	@Override

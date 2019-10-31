@@ -34,6 +34,7 @@ public class Photo {
 	private User puser;
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name="post_id")
 	private Post post;
 
 	public Photo() {
