@@ -16,7 +16,7 @@
 
 	<context:annotation-config />
 	<context:component-scan
-		base-package="com.webby" />
+		base-package="com.revature.projecttwo" />
 	<tx:annotation-driven />
 	<mvc:annotation-driven/>
 	

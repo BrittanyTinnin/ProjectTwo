@@ -2,13 +2,38 @@ package com.revature.daoimpl;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import javax.transaction.Transactional;
+
+import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import com.revature.dao.GenericDao;
 import com.revature.model.Photo;
 
+@Transactional
+@Repository
 public class PhotoDao implements GenericDao<Photo> {
+
+	static {
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private SessionFactory sesFact;
+	
+	
+	
+	public SessionFactory getSesFact() {
+		return sesFact;
+	}
+
+	public void setSesFact(SessionFactory sesFact) {
+		this.sesFact = sesFact;
+	}
 
 	@Override
 	public List<Photo> getAll() {
@@ -24,13 +49,13 @@ public class PhotoDao implements GenericDao<Photo> {
 //		Transaction t = ses.beginTransaction();
 //		ses.persist(photo);
 //		t.commit();
-		
+
 	}
 
 	@Override
 	public void update(Photo t) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 //	@Override
@@ -42,7 +67,7 @@ public class PhotoDao implements GenericDao<Photo> {
 	@Override
 	public void delete(Photo t) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -54,9 +79,7 @@ public class PhotoDao implements GenericDao<Photo> {
 	@Override
 	public void updateInfo(Photo t) {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-
 
 }

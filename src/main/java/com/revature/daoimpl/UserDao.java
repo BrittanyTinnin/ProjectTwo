@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -48,11 +47,17 @@ public class UserDao implements GenericDao<User> {
 	public void update(User user) {
 		sesFact.getCurrentSession().update(user);
 	}
+	
+	@Override
+	public void updateInfo(User t) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 	@Override
 	public User findBy(String username) {
-		return sesFact.getCurrentSession().load(User.class, username);
+		return sesFact.getCurrentSession().get(User.class, username);
 //		Session ses = HibernateUtil.getSession();
 //		String hql = "from User u where u.username = :username";
 //		Query q = ses.createQuery(hql);
@@ -62,7 +67,7 @@ public class UserDao implements GenericDao<User> {
 	
 
 	
-//	public void resetPassword(String username, String password) {
+	public void resetPassword(String username, String password) {
 //		Session ses = HibernateUtil.getSession();
 //		Transaction t = ses.beginTransaction();
 //		String hql = "update User set password = :password where username = :username";
@@ -71,20 +76,16 @@ public class UserDao implements GenericDao<User> {
 //		q.setParameter("username", username);
 //		q.executeUpdate();
 //		t.commit();
-//	}
+	}
+	
+	@Override
+	public User selectById(int id) {
+		return sesFact.getCurrentSession().get(User.class, id);
+	}
 	
 
 	@Override
-	public void delete(User user) {
-		// TODO Auto-generated method stub
-		
+	public void delete(int id) {
+		sesFact.getCurrentSession().delete(selectById(id));
 	}
-
-	@Override
-	public void updateInfo(User t) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 }

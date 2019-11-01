@@ -14,5 +14,7 @@ public interface GenericDao<T> {
 	
 	T findBy(String t);
 	
-	void delete(T t);
+	T selectById(int t);
+	
+	void delete(int t);
 }
