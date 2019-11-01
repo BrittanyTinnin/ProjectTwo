@@ -33,7 +33,7 @@ public class PostDao implements GenericDao<Post> {
 	}
 
 	@Override
-	public List<Post> getAll() {
+	public List<Post> selectAll() {
 		return sesFact.getCurrentSession().createQuery("from Post", Post.class).list();
 	}
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface GenericDao<T> {
 
-	List<T> getAll();
+	List<T> selectAll();
 	
 	void create(T t);
 		

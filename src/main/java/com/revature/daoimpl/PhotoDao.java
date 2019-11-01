@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.revature.dao.GenericDao;
 import com.revature.model.Photo;
 
+
 @Transactional
 @Repository
 public class PhotoDao implements GenericDao<Photo> {
@@ -34,7 +35,7 @@ public class PhotoDao implements GenericDao<Photo> {
 	}
 
 	@Override
-	public List<Photo> getAll() {
+	public List<Photo> selectAll() {
 		return sesFact.getCurrentSession().createQuery("from Photo", Photo.class).list();
 	}
 
@@ -62,15 +63,13 @@ public class PhotoDao implements GenericDao<Photo> {
 	}
 
 	@Override
-	public Photo selectById(int t) {
-		// TODO Auto-generated method stub
-		return null;
+	public Photo selectById(int id) {
+		return sesFact.getCurrentSession().get(Photo.class, id);
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+		sesFact.getCurrentSession().delete(selectById(id));
 	}
 
 }

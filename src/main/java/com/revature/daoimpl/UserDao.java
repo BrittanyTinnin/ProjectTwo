@@ -34,7 +34,7 @@ public class UserDao implements GenericDao<User> {
 	}
 
 	@Override
-	public List<User> getAll() {
+	public List<User> selectAll() {
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
 
