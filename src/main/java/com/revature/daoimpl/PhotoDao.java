@@ -14,7 +14,7 @@ import com.revature.model.Photo;
 
 @Transactional
 @Repository
-public class PhotoDao implements GenericDao<Photo> {
+public class PhotoDao {
 
 	static {
 		try {
@@ -28,46 +28,46 @@ public class PhotoDao implements GenericDao<Photo> {
 	private SessionFactory sesFact;
 	
 	
+	
+	
+	public PhotoDao() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Autowired
 	public PhotoDao(SessionFactory sesFact) {
 		super();
 		this.sesFact = sesFact;
 	}
 
-	@Override
 	public List<Photo> selectAll() {
 		return sesFact.getCurrentSession().createQuery("from Photo", Photo.class).list();
 	}
 
-	@Override
 	public void create(Photo photo) {
 		sesFact.getCurrentSession().save(photo);
 	}
 
-	@Override
 	public void update(Photo photo) {
 		sesFact.getCurrentSession().update(photo);
 	}
 
 
-	@Override
 	public Photo findBy(String t) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public void updateInfo(Photo t) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public Photo selectById(int id) {
 		return sesFact.getCurrentSession().get(Photo.class, id);
 	}
 
-	@Override
 	public void delete(int id) {
 		sesFact.getCurrentSession().delete(selectById(id));
 	}

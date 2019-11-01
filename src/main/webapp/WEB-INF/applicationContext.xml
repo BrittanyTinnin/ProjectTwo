@@ -16,7 +16,7 @@
 
 	<context:annotation-config />
 	<context:component-scan
-		base-package="com.revature.projecttwo" />
+		base-package="com.revature" />
 	<tx:annotation-driven />
 	<mvc:annotation-driven />
 	

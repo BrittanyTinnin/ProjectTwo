@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,6 +23,13 @@ public class UserController {
 	public @ResponseBody List<User> getAll(){
 		System.out.println("inside get all controller");
 		return us.getAll();
+	}
+	
+	@PostMapping(value="/post.app")
+	public @ResponseBody User insert(@RequestBody User u) {
+		System.out.println(u);
+		us.create(u);
+		return u;
 	}
 
 	public UserService getUs() {

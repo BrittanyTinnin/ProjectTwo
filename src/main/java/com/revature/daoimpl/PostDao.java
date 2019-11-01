@@ -13,7 +13,7 @@ import com.revature.model.Post;
 
 @Transactional
 @Repository
-public class PostDao implements GenericDao<Post> {
+public class PostDao {
 	
 	static {
 		try {
@@ -26,46 +26,46 @@ public class PostDao implements GenericDao<Post> {
 	
 	private SessionFactory sesFact;
 	
+	
+	
+	public PostDao() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Autowired
 	public PostDao(SessionFactory sesFact) {
 		super();
 		this.sesFact = sesFact;
 	}
 
-	@Override
 	public List<Post> selectAll() {
 		return sesFact.getCurrentSession().createQuery("from Post", Post.class).list();
 	}
 
-	@Override
 	public void create(Post post) {
 		sesFact.getCurrentSession().save(post);
 	}
 
-	@Override
 	public void update(Post post) {
 		sesFact.getCurrentSession().update(post);
 	}
 
-	@Override
 	public void updateInfo(Post t) { //in case when want to add feat to edit post
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public Post findBy(String t) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	
-	@Override
 	public Post selectById(int id) {
 		return sesFact.getCurrentSession().get(Post.class, id);
 	}
 	
-	@Override
 	public void delete(int id) {
 		sesFact.getCurrentSession().delete(selectById(id));
 	}

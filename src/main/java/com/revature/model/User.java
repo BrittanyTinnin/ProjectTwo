@@ -77,22 +77,6 @@ public class User {
 		this.photos = photos;
 	}
 
-	public User(String email, String username, String password, String breed, int age, String gender,
-			Timestamp birthday, Timestamp date, Set<Post> posts, List<Photo> photos) {
-		super();
-		this.email = email;
-		this.username = username;
-		this.password = password;
-		this.breed = breed;
-		this.age = age;
-		this.gender = gender;
-		this.birthday = birthday;
-		this.date = date;
-		this.posts = posts;
-		this.photos = photos;
-	}
-
-
 
 	public int getId() {
 		return id;
@@ -257,9 +241,4 @@ public class User {
 		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password + ", breed="
 				+ breed + ", age=" + age + ", gender=" + gender + ", birthday=" + birthday + ", date=" + date + "]";
 	}
-	
-	
-	
-
-	
 }

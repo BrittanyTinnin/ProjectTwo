@@ -14,7 +14,7 @@ import com.revature.model.User;
 
 @Transactional
 @Repository
-public class UserDao implements GenericDao<User> {
+public class UserDao {
 	
 	static {
 		try {
@@ -27,35 +27,37 @@ public class UserDao implements GenericDao<User> {
 	
 	private SessionFactory sesFact;
 	
+	
+	
+	public UserDao() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Autowired
 	public UserDao(SessionFactory sesFact) {
 		super();
 		this.sesFact = sesFact;
 	}
 
-	@Override
 	public List<User> selectAll() {
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
 
-	@Override
 	public void create(User user) {
 		sesFact.getCurrentSession().save(user);
 	}
 
-	@Override
 	public void update(User user) {
 		sesFact.getCurrentSession().update(user);
 	}
 	
-	@Override
 	public void updateInfo(User t) {
 		// TODO Auto-generated method stub
 		
 	}
 
 
-	@Override
 	public User findBy(String username) {
 		return sesFact.getCurrentSession().get(User.class, username);
 //		Session ses = HibernateUtil.getSession();
@@ -78,13 +80,11 @@ public class UserDao implements GenericDao<User> {
 //		t.commit();
 	}
 	
-	@Override
 	public User selectById(int id) {
 		return sesFact.getCurrentSession().get(User.class, id);
 	}
 	
 
-	@Override
 	public void delete(int id) {
 		sesFact.getCurrentSession().delete(selectById(id));
 	}

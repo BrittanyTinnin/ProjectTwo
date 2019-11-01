@@ -7,6 +7,7 @@
 //import java.util.Set;
 //
 //import com.revature.daoimpl.PhotoDao;
+//import com.revature.daoimpl.PostDao;
 //import com.revature.daoimpl.UserDao;
 //import com.revature.model.Photo;
 //import com.revature.model.Post;
@@ -16,20 +17,15 @@
 //
 //	public static void main(String[] args) {
 //		UserDao ud = new UserDao();
-//		PhotoDao ph = new PhotoDao(); 
+//		PostDao pd = new PostDao();
+//		PhotoDao ph = new PhotoDao();
 //		Set<Post> pt = new HashSet<>();
 //		List<Photo> ft = new ArrayList<>();
-//		User u4 = new User();
-////		
-////		
-////		
-////		User u1 = new User("this is my email2", "myUsername", "myPassword", "my breed", 4, "female", new java.sql.Timestamp(new Date().getTime()), new java.sql.Timestamp(new Date().getTime()), pt, ft);
-//		User u1 = new User("this is my email2", "myUsername", "myPassword", "my breed", 4, "female", new java.sql.Timestamp(new Date().getTime()), new java.sql.Timestamp(new Date().getTime()), pt, ft);
-////		User u2 = new User("this is my email24566", "myHome", "myPassword", "my best", 2, "male", new java.sql.Timestamp(new Date().getTime()), new java.sql.Timestamp(new Date().getTime()), pt, ft);
-////		User u3 = new User("this is my email200006", "myHome", "myPassword", "my best", 2, "male", new java.sql.Timestamp(new Date().getTime()), new java.sql.Timestamp(new Date().getTime()), pt, ft);
-////		User u4 = new User("gogo@email.com", "userName", "PassWord", "poodle", 1, "trans", new java.sql.Timestamp(new Date().getTime()), new java.sql.Timestamp(new Date().getTime()), pt, ft);
-//////		User u1 = new User();
 //		
+//		
+//
+//		User u1 = new User("this is my email2", "myUsername", "myPassword", "my breed", 4, "female", new java.sql.Timestamp(new Date().getTime()), new java.sql.Timestamp(new Date().getTime()), pt, ft);
+//
 //		
 //		
 ////		
@@ -45,7 +41,7 @@
 ////		f1.setUser(ud.findBy("myHome"));
 ////		ft.add(f1);
 //		
-////		ud.create(u4);
+//		ud.create(u1);
 ////		pd.create(p1);
 ////		ph.create(f1);
 //		
@@ -53,11 +49,11 @@
 //		
 //		
 ////		System.out.println(ft);
-////		System.out.println(ud.getAll());
+//		System.out.println(ud.selectAll());
 //		
 //		
-//		ud.resetPassword("myHome", "testPassword");
-//		System.out.println(ud.findBy("myHome"));
+////		ud.resetPassword("myHome", "testPassword");
+////		System.out.println(ud.findBy("myHome"));
 //		
 //	}
 //

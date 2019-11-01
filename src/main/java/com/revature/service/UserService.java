@@ -26,6 +26,7 @@ public class UserService {
 	}
 	
 	public void create(User u) {
+		System.out.println("inside user service");
 		ud.create(u);
 	}
 	

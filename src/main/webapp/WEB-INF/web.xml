@@ -17,4 +17,22 @@
   	<servlet-name>dispatcher</servlet-name>
   	<url-pattern>*.app</url-pattern>
   </servlet-mapping>
+  
+  <filter>
+  	<filter-name>cors</filter-name>
+  	<filter-class>com.revature.servlet.CorsFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>cors</filter-name>
+  	<url-pattern>*.app</url-pattern>
+  </filter-mapping>
+  
+  <servlet>
+  	<servlet-name>json</servlet-name>
+  	<servlet-class>com.revature.servlet.JsonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>json</servlet-name>
+  	<url-pattern>*.json</url-pattern>
+  </servlet-mapping>
 </web-app>

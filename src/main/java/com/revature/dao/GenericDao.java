@@ -2,6 +2,12 @@ package com.revature.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
+
+@Transactional
+@Repository
 public interface GenericDao<T> {
 
 	List<T> selectAll();
