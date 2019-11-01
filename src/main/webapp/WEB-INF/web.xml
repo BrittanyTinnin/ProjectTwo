@@ -5,7 +5,7 @@
     <welcome-file>html/index.html</welcome-file>
   </welcome-file-list>
   
-  <listener>
+ <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   

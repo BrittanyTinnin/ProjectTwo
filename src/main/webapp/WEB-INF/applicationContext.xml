@@ -18,10 +18,10 @@
 	<context:component-scan
 		base-package="com.revature.projecttwo" />
 	<tx:annotation-driven />
-	<mvc:annotation-driven/>
+	<mvc:annotation-driven />
 	
 	<!-- this is your data source -->
-	<bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.postgresql.Driver"/>
 		<property name="url" value="jdbc:postgresql://postgresql-database-1.c2ilx44fjskp.us-east-2.rds.amazonaws.com:5432/project_two"/>
 		<property name="username" value="ptwo_user"/>
@@ -30,7 +30,7 @@
 
 	<!-- this is your session factory -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-		<property name="dataSource" ref="datasource" />
+		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="com.revature.model"/>
 		<property name="hibernateProperties">
 			<props>
