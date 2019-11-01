@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.revature.dao.GenericDao;
@@ -26,49 +27,27 @@ public class PhotoDao implements GenericDao<Photo> {
 	private SessionFactory sesFact;
 	
 	
-	
-	public SessionFactory getSesFact() {
-		return sesFact;
-	}
-
-	public void setSesFact(SessionFactory sesFact) {
+	@Autowired
+	public PhotoDao(SessionFactory sesFact) {
+		super();
 		this.sesFact = sesFact;
 	}
 
 	@Override
 	public List<Photo> getAll() {
-//		Session ses = HibernateUtil.getSession();
-//		String hql = "from Photo";
-//		return ses.createQuery(hql).list();
-		return null;
+		return sesFact.getCurrentSession().createQuery("from Photo", Photo.class).list();
 	}
 
 	@Override
 	public void create(Photo photo) {
-//		Session ses = HibernateUtil.getSession();
-//		Transaction t = ses.beginTransaction();
-//		ses.persist(photo);
-//		t.commit();
-
+		sesFact.getCurrentSession().save(photo);
 	}
 
 	@Override
-	public void update(Photo t) {
-		// TODO Auto-generated method stub
-
+	public void update(Photo photo) {
+		sesFact.getCurrentSession().update(photo);
 	}
 
-//	@Override
-//	public void findBy(Photo t) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-
-	@Override
-	public void delete(Photo t) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public Photo findBy(String t) {
@@ -80,6 +59,18 @@ public class PhotoDao implements GenericDao<Photo> {
 	public void updateInfo(Photo t) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public Photo selectById(int t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
