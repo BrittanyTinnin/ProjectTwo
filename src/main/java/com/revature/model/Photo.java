@@ -4,26 +4,37 @@ import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="photos")
 public class Photo {
 
-	
 	@Id
 	@Column(name = "photo_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name = "date")
 	private Timestamp date;
 	
-	@Column(name = "image")
+	@Column(name = "url")
 	private String url;
 	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	private User puser;
+	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "post_id")
+	@JoinColumn(name="post_id")
 	private Post post;
 
 	public Photo() {
@@ -31,19 +42,19 @@ public class Photo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Photo(int id, Timestamp date, String url, Post post) {
+	public Photo(int id, Timestamp date, String url, User user) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.url = url;
-		this.post = post;
+		this.puser = user;
 	}
 
-	public Photo(Timestamp date, String url, Post post) {
+	public Photo(Timestamp date, String url, User user) {
 		super();
 		this.date = date;
 		this.url = url;
-		this.post = post;
+		this.puser = user;
 	}
 
 	public int getId() {
@@ -70,12 +81,12 @@ public class Photo {
 		this.url = url;
 	}
 
-	public Post getPost() {
-		return post;
+	public User getUser() {
+		return puser;
 	}
 
-	public void setPost(Post post) {
-		this.post = post;
+	public void setUser(User user) {
+		this.puser = user;
 	}
 
 	@Override
@@ -84,8 +95,8 @@ public class Photo {
 		int result = 1;
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((post == null) ? 0 : post.hashCode());
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
+		result = prime * result + ((puser == null) ? 0 : puser.hashCode());
 		return result;
 	}
 
@@ -105,22 +116,22 @@ public class Photo {
 			return false;
 		if (id != other.id)
 			return false;
-		if (post == null) {
-			if (other.post != null)
-				return false;
-		} else if (!post.equals(other.post))
-			return false;
 		if (url == null) {
 			if (other.url != null)
 				return false;
 		} else if (!url.equals(other.url))
+			return false;
+		if (puser == null) {
+			if (other.puser != null)
+				return false;
+		} else if (!puser.equals(other.puser))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Photo [id=" + id + ", date=" + date + ", url=" + url + ", post=" + post + "]";
+		return "Photo [id=" + id + ", date=" + date + ", url=" + url + ", user=" + puser + "]";
 	}
-	
+
 }
