@@ -13,7 +13,7 @@ public class UserService {
 
 	private UserDao ud;
 	
-	public List<User> getAll(){
+	public List<User> getAllUsers(){
 		return ud.selectAll();
 	}
 	
