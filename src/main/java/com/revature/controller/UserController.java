@@ -31,6 +31,13 @@ public class UserController {
 		us.create(u);
 		return u;
 	}
+	
+	@PostMapping(value="/userUpdate.app")
+	public @ResponseBody User update(@RequestBody User u) {
+		System.out.println("inside user controller update method" + u);
+		us.update(u);
+		return u;
+	}
 
 	public UserService getUs() {
 		return us;

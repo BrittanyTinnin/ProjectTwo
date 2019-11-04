@@ -22,6 +22,7 @@ public class UserService {
 	}
 	
 	public void update(User u) {
+		System.out.println("inside user service update method");
 		ud.update(u);
 	}
 	

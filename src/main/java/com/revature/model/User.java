@@ -1,7 +1,9 @@
 package com.revature.model;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -37,14 +39,11 @@ public class User {
 	@Column(name = "breed")
 	private String breed;
 	
-	@Column(name = "age")
-	private int age;
-	
 	@Column(name = "gender")
 	private String gender;
 	
 	@Column(name = "birthday")
-	private Timestamp birthday;
+	private Calendar birthday;
 	
 	@Column(name = "date")
 	private Timestamp date;
@@ -61,15 +60,14 @@ public class User {
 	}
 
 
-	public User(int id, String email, String username, String password, String breed, int age, String gender,
-			Timestamp birthday, Timestamp date, Set<Post> posts, List<Photo> photos) {
+	public User(int id, String email, String username, String password, String breed, String gender,
+			Calendar birthday, Timestamp date, Set<Post> posts, List<Photo> photos) {
 		super();
 		this.id = id;
 		this.email = email;
 		this.username = username;
 		this.password = password;
 		this.breed = breed;
-		this.age = age;
 		this.gender = gender;
 		this.birthday = birthday;
 		this.date = date;
@@ -118,13 +116,6 @@ public class User {
 		this.breed = breed;
 	}
 
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
 
 	public String getGender() {
 		return gender;
@@ -134,11 +125,11 @@ public class User {
 		this.gender = gender;
 	}
 
-	public Timestamp getBirthday() {
+	public Calendar getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Timestamp birthday) {
+	public void setBirthday(Calendar birthday) {
 		this.birthday = birthday;
 	}
 
@@ -173,7 +164,6 @@ public class User {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + age;
 		result = prime * result + ((birthday == null) ? 0 : birthday.hashCode());
 		result = prime * result + ((breed == null) ? 0 : breed.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
@@ -194,8 +184,6 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (age != other.age)
-			return false;
 		if (birthday == null) {
 			if (other.birthday != null)
 				return false;
@@ -239,6 +227,6 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password + ", breed="
-				+ breed + ", age=" + age + ", gender=" + gender + ", birthday=" + birthday + ", date=" + date + "]";
+				+ breed + ", gender=" + gender + ", birthday=" + birthday + ", date=" + date + "]";
 	}
 }
