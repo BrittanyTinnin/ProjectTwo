@@ -38,6 +38,7 @@ public class UserController {
 		us.update(u);
 		return u;
 	}
+	
 
 	public UserService getUs() {
 		return us;

@@ -26,13 +26,4 @@
   	<filter-name>cors</filter-name>
   	<url-pattern>*.app</url-pattern>
   </filter-mapping>
-  
-  <servlet>
-  	<servlet-name>json</servlet-name>
-  	<servlet-class>com.revature.servlet.JsonServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>json</servlet-name>
-  	<url-pattern>*.json</url-pattern>
-  </servlet-mapping>
 </web-app>

@@ -21,6 +21,10 @@ public class UserService {
 		return ud.selectById(id);
 	}
 	
+	public User getByUsername(String username) {
+		return ud.findBy(username);
+	}
+	
 	public void update(User u) {
 		System.out.println("inside user service update method");
 		ud.update(u);
