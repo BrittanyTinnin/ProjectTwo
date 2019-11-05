@@ -63,7 +63,7 @@ public class LikeDao {
 
 	
 	public Like selectById(int id) {
-		return sesFact.getCurrentSession().get(Post.class, id);
+		return sesFact.getCurrentSession().get(Like.class, id);
 	}
 	
 	public void delete(int id) {
