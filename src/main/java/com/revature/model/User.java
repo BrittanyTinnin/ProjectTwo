@@ -61,7 +61,7 @@ public class User {
 	@OneToMany(mappedBy = "puser", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Photo> photos = new ArrayList<>();
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "like", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Like>likes=new HashSet<>();
 	
 	public User() {
