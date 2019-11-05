@@ -30,11 +30,9 @@ public class Post {
 	@Column(name = "date")
 	private Timestamp date;
 	
-	@NotNull(message="Post must contain some content")
 	@Column(name = "content")
 	private String content;
 	
-	@NotNull(message="Post must belong to some User")
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;

@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.daoimpl.LikeDao;
-import com.revature.daoimpl.PhotoDao;
 import com.revature.model.Like;
-import com.revature.model.Photo;
 
 @Service
 public class LikeService {
