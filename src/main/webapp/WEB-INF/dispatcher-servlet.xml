@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	 https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="ViewResolver"
+	<bean id="AuthController"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	</bean>
 </beans>
