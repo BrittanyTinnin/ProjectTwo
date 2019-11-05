@@ -16,48 +16,47 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="posts")
+@Table(name = "posts")
 public class Post {
-	
+
 	@Id
 	@Column(name = "post_id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@Column(name = "date")
 	private Timestamp date;
-	
+
 	@Column(name = "content")
 	private String content;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
-	
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="photo_id")
+
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "photo_id")
 	private Photo photo;
+
+	@OneToMany(mappedBy = "lpost", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Like> likes = new HashSet<>();
 
 	public Post() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Post(int id, Timestamp date, String content, User user) {
+	public Post(int id, Timestamp date, String content, User user, Photo photo, Set<Like> likes) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.content = content;
 		this.user = user;
-	}
-
-	public Post(Timestamp date, String content, User user) {
-		super();
-		this.date = date;
-		this.content = content;
-		this.user = user;
+		this.photo = photo;
+		this.likes = likes;
 	}
 
 	public int getId() {
@@ -90,6 +89,22 @@ public class Post {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Photo getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(Photo photo) {
+		this.photo = photo;
+	}
+
+	public Set<Like> getLikes() {
+		return likes;
+	}
+
+	public void setLikes(Set<Like> likes) {
+		this.likes = likes;
 	}
 
 	@Override

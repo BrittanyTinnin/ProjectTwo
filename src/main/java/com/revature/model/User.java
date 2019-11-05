@@ -14,8 +14,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 @Entity
 @Table(name="users")
@@ -29,9 +34,11 @@ public class User {
 	@Column(name = "email")
 	private String email;
 	
+
 	@Column(name = "username")
 	private String username;
 	
+
 	@Column(name = "user_password")
 	private String password;
 	
@@ -41,8 +48,10 @@ public class User {
 	@Column(name = "gender")
 	private String gender;
 	
+
 	@Column(name = "birthday")
 	private Calendar birthday;
+	
 	
 	@Column(name = "date")
 	private Timestamp date;
@@ -53,14 +62,16 @@ public class User {
 	@OneToMany(mappedBy = "puser", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Photo> photos = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "luser", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<Like>likes=new HashSet<>();
+	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public User(int id, String email, String username, String password, String breed, String gender,
-			Calendar birthday, Timestamp date, Set<Post> posts, List<Photo> photos) {
+	public User(int id, String email, String username, String password, String breed, String gender, Calendar birthday,
+			Timestamp date, Set<Post> posts, List<Photo> photos, Set<Like> likes) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -72,6 +83,7 @@ public class User {
 		this.date = date;
 		this.posts = posts;
 		this.photos = photos;
+		this.likes = likes;
 	}
 
 
@@ -158,6 +170,14 @@ public class User {
 		this.photos = photos;
 	}
 
+
+	public Set<Like> getLikes() {
+		return likes;
+	}
+
+	public void setLikes(Set<Like> likes) {
+		this.likes = likes;
+	}
 
 	@Override
 	public int hashCode() {
