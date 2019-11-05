@@ -22,7 +22,7 @@ public class UserController {
 	@GetMapping(value="/getAll.app")
 	public @ResponseBody List<User> getAll(){
 		System.out.println("inside get all controller");
-		return us.getAll();
+		return us.getAllUsers();
 	}
 	
 	@PostMapping(value="/post.app")
@@ -38,6 +38,7 @@ public class UserController {
 		us.update(u);
 		return u;
 	}
+	
 
 	public UserService getUs() {
 		return us;

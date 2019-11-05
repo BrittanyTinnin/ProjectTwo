@@ -13,12 +13,16 @@ public class UserService {
 
 	private UserDao ud;
 	
-	public List<User> getAll(){
+	public List<User> getAllUsers(){
 		return ud.selectAll();
 	}
 	
 	public User getById(int id) {
 		return ud.selectById(id);
+	}
+	
+	public User getByUsername(String username) {
+		return ud.findBy(username);
 	}
 	
 	public void update(User u) {

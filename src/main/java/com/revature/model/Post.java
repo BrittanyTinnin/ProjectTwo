@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="posts")
@@ -29,9 +30,11 @@ public class Post {
 	@Column(name = "date")
 	private Timestamp date;
 	
+	@NotNull(message="Post must contain some content")
 	@Column(name = "content")
 	private String content;
 	
+	@NotNull(message="Post must belong to some User")
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -39,6 +42,10 @@ public class Post {
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="photo_id")
 	private Photo photo;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "like_id")
+	private Set<Like>likes=new HashSet<>();
 
 	public Post() {
 		super();
