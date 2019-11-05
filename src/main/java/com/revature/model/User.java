@@ -16,6 +16,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 @Entity
 @Table(name="users")
@@ -26,23 +30,35 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	@NotNull(message="Email is a required field")
 	@Column(name = "email")
 	private String email;
 	
+	@NotNull(message="Username is a required field")
+	@Min(value=5, message="Username must contain 5-12 characters")
+	@Max(value=12, message="Username must contain 5-12 characters")
 	@Column(name = "username")
 	private String username;
 	
+	@NotNull(message="Password is a required field")
+	@Min(value=5, message="Password must contain 5-12 characters")
+	@Max(value=12, message="Password must contain 5-12 characters")
 	@Column(name = "user_password")
 	private String password;
 	
+	@NotNull(message="Breed is a required field")
 	@Column(name = "breed")
 	private String breed;
 	
+	@NotNull(message="Gender is a required field")
 	@Column(name = "gender")
 	private String gender;
 	
+	@Past(message="Birthday must be a date in the past")
+	@NotNull(message="Birthday is a required field")
 	@Column(name = "birthday")
 	private Calendar birthday;
+	
 	
 	@Column(name = "date")
 	private Timestamp date;
