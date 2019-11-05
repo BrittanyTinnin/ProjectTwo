@@ -1,6 +1,5 @@
 package com.revature.model;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -48,10 +47,10 @@ public class User {
 	@Column(name = "date")
 	private Timestamp date;
 	
-	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private Set<Post> posts = new HashSet<>();
 
-	@OneToMany(mappedBy = "puser", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "puser", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Photo> photos = new ArrayList<>();
 	
 	public User() {
