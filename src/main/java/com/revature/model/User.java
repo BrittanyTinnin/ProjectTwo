@@ -31,32 +31,24 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@NotNull(message="Email is a required field")
 	@Column(name = "email")
 	private String email;
 	
-	@NotNull(message="Username is a required field")
-	@Min(value=5, message="Username must contain 5-12 characters")
-	@Max(value=12, message="Username must contain 5-12 characters")
+
 	@Column(name = "username")
 	private String username;
 	
-	@NotNull(message="Password is a required field")
-	@Min(value=5, message="Password must contain 5-12 characters")
-	@Max(value=12, message="Password must contain 5-12 characters")
+
 	@Column(name = "user_password")
 	private String password;
 	
-	@NotNull(message="Breed is a required field")
 	@Column(name = "breed")
 	private String breed;
 	
-	@NotNull(message="Gender is a required field")
 	@Column(name = "gender")
 	private String gender;
 	
-	@Past(message="Birthday must be a date in the past")
-	@NotNull(message="Birthday is a required field")
+
 	@Column(name = "birthday")
 	private Calendar birthday;
 	
@@ -70,7 +62,7 @@ public class User {
 	@OneToMany(mappedBy = "puser", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Photo> photos = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "like", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "luser", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Like>likes=new HashSet<>();
 	
 	public User() {

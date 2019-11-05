@@ -30,11 +30,9 @@ public class Post {
 	@Column(name = "date")
 	private Timestamp date;
 	
-	@NotNull(message="Post must contain some content")
 	@Column(name = "content")
 	private String content;
 	
-	@NotNull(message="Post must belong to some User")
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -43,8 +41,7 @@ public class Post {
 	@JoinColumn(name="photo_id")
 	private Photo photo;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "like_id")
+	@OneToMany(mappedBy = "lpost", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Like>likes=new HashSet<>();
 
 	public Post() {

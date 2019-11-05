@@ -20,13 +20,11 @@ public class Like {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@NotNull(message="Like must be associated to a user")
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
-	private User user;
+	private User luser;
 	
-	@NotNull(message="Like must must be associated to a post")
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "post_id")
-	private Post post;
+	private Post lpost;
 }
