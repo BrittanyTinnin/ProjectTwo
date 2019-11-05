@@ -21,21 +21,13 @@ import com.revature.service.UserService;
 @CrossOrigin(origins = "*")
 public class PostController {
 
-	private PostService post;
-	private UserService user;
+	private PostService ps;
+	private UserService us;
 
-	@RequestMapping(value = "/postIn.app", method = RequestMethod.POST)
+	@RequestMapping(value = "/postIt.app", method = RequestMethod.POST)
 	public @ResponseBody Post insert(@RequestBody Post p) {
-		Photo ph = new Photo();
-//	        p.setPhoto(ph);
 		System.out.println(p);
-		User u = p.getUser();
-		int id = u.getUser_id();
-		System.out.println(id);
-		System.out.println(u);
-		u.getPost().add(p);
-		System.out.println("succes");
-		user.postMan(id);
+		ps.create(p);
 		return p;
 	}
 
@@ -52,25 +44,25 @@ public class PostController {
 //	            if(temp.get(i).getUser().getUser_id()==id) {
 //	                userPosts.add(temp.get(i));
 //	            }
-		return post.getAll();
+		return ps.getAll();
 	}
 
 	public PostService getPost() {
-		return post;
+		return ps;
 	}
 
 	@Autowired
 	public void setPost(PostService post) {
-		this.post = post;
+		this.ps = post;
 	}
 
 	public UserService getUser() {
-		return user;
+		return us;
 	}
 
 	@Autowired
 	public void setUser(UserService user) {
-		this.user = user;
+		this.us = user;
 	}
 
 }

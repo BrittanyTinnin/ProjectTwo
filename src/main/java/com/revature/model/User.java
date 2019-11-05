@@ -70,9 +70,8 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public User(int id, String email, String username, String password, String breed, String gender,
-			Calendar birthday, Timestamp date, Set<Post> posts, List<Photo> photos) {
+	public User(int id, String email, String username, String password, String breed, String gender, Calendar birthday,
+			Timestamp date, Set<Post> posts, List<Photo> photos, Set<Like> likes) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -84,6 +83,7 @@ public class User {
 		this.date = date;
 		this.posts = posts;
 		this.photos = photos;
+		this.likes = likes;
 	}
 
 
@@ -170,6 +170,14 @@ public class User {
 		this.photos = photos;
 	}
 
+
+	public Set<Like> getLikes() {
+		return likes;
+	}
+
+	public void setLikes(Set<Like> likes) {
+		this.likes = likes;
+	}
 
 	@Override
 	public int hashCode() {
