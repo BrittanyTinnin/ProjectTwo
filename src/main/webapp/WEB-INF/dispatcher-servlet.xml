@@ -6,7 +6,6 @@
 
 	<bean id="ViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!-- UPDATE 11/2/19 ENABLE SERVLET TO ACCESS FILES -->
 		<property name="prefix" value="html/"/>
 		<property name="suffix" value=".html"/>
 	</bean>
