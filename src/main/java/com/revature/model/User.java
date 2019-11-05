@@ -71,7 +71,6 @@ public class User {
 	private List<Photo> photos = new ArrayList<>();
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "like_id")
 	private Set<Like>likes=new HashSet<>();
 	
 	public User() {
