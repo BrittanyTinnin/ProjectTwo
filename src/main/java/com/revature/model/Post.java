@@ -1,6 +1,8 @@
 package com.revature.model;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -40,6 +42,10 @@ public class Post {
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="photo_id")
 	private Photo photo;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "like_id")
+	private Set<Like>likes=new HashSet<>();
 
 	public Post() {
 		super();
