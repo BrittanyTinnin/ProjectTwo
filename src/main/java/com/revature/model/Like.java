@@ -21,12 +21,12 @@ public class Like {
 	private int id;
 	
 	@NotNull(message="Like must be associated to a user")
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private User user;
 	
 	@NotNull(message="Like must must be associated to a post")
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "post_id")
 	private Post post;
 }
