@@ -36,8 +36,9 @@ public class PostController {
 //	        return new ResponseEntity<List<Post>>(post.getAll(), HttpStatus.OK);
 //	    }
 
-	@RequestMapping(value = "/getAll.app", method = RequestMethod.POST)
+	@RequestMapping(value = "/getAll.app", method = RequestMethod.GET)
 	public @ResponseBody List<Post> getAll() {
+		System.out.println("inside post getAll");
 //	        List<Post> userPosts = new ArrayList<Post>();
 //	        List<Post> temp = post.getAll();
 //	        for(int i=0;i<temp.size();i++) {

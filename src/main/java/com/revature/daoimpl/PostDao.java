@@ -39,6 +39,7 @@ public class PostDao {
 	}
 
 	public List<Post> selectAll() {
+		System.out.println("inside dao post selectAll");
 		return sesFact.getCurrentSession().createQuery("from Post", Post.class).list();
 	}
 

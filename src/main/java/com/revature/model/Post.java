@@ -41,23 +41,24 @@ public class Post {
 	@JoinColumn(name = "photo_id")
 	private Photo photo;
 
-	@OneToMany(mappedBy = "lpost", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<Like> likes = new HashSet<>();
 
 	public Post() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Post(int id, Timestamp date, String content, User user, Photo photo, Set<Like> likes) {
+
+	public Post(int id, Timestamp date, String content, User user, Photo photo) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.content = content;
 		this.user = user;
 		this.photo = photo;
-		this.likes = likes;
 	}
+
+
+
 
 	public int getId() {
 		return id;
@@ -99,14 +100,7 @@ public class Post {
 		this.photo = photo;
 	}
 
-	public Set<Like> getLikes() {
-		return likes;
-	}
-
-	public void setLikes(Set<Like> likes) {
-		this.likes = likes;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
