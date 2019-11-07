@@ -22,7 +22,8 @@ public class UserService {
 	}
 	
 	public User getByUsername(String username) {
-		return ud.findBy(username);
+		System.out.println("inside getByUsername");
+		return ud.findByUsername(username);
 	}
 	
 	public void update(User u) {

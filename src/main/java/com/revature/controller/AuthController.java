@@ -21,22 +21,20 @@ public class AuthController {
 	@PostMapping(value="/login.app")
 	public @ResponseBody User login(@RequestBody User user) {
 		System.out.println("inside login method in auth controller");
-//		System.out.println("inside user controller update method" + username);
-//		return us.getByUsername(username);
-		System.out.println(us.getAllUsers());
-		System.out.println(user.getUsername());
-		for(User u : us.getAllUsers()) {
-			System.out.println("inside for loop of login method in auth controller");
-			System.out.println(u);
-			if(u.getUsername().equals(user.getUsername()) && u.getPassword().equals(user.getPassword())) {
-				System.out.println("inside if statement of login auth controller");
-				System.out.println(u);
-				return u;
-			} else {
-				return null;
-			}
-		}
-		return null;
+		
+		return us.getByUsername(user.getUsername());
+//			
+//			System.out.println("inside for loop of login method in auth controller");
+//			System.out.println(u);
+//			if(u.getUsername() == user.getUsername()) {
+//				System.out.println("inside if statement of login auth controller");
+//				System.out.println(u);
+//				System.out.println(u.getUsername());
+//				return u;
+//			} else {
+//				return null;
+		
+		
 	}
 
 	public UserService getUs() {

@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.revature.model.Photo;
 import com.revature.model.Post;
-import com.revature.model.User;
 import com.revature.service.PostService;
 import com.revature.service.UserService;
 
@@ -31,21 +31,18 @@ public class PostController {
 		return p;
 	}
 
-//	    @GetMapping(value="getAll.app")
-//	    public ResponseEntity<List<Post>> getAll(){
-//	        return new ResponseEntity<List<Post>>(post.getAll(), HttpStatus.OK);
-//	    }
+
 
 	@RequestMapping(value = "/getAll.app", method = RequestMethod.GET)
 	public @ResponseBody List<Post> getAll() {
 		System.out.println("inside post getAll");
-//	        List<Post> userPosts = new ArrayList<Post>();
-//	        List<Post> temp = post.getAll();
-//	        for(int i=0;i<temp.size();i++) {
-//	            if(temp.get(i).getUser().getUser_id()==id) {
-//	                userPosts.add(temp.get(i));
-//	            }
 		return ps.getAll();
+	}
+	
+	@PostMapping(value="/{id}/getById.app")
+	public @ResponseBody Post getById(@PathVariable("id") int id) {
+		System.out.println("inside post getById");
+		return ps.getById(id);
 	}
 
 	public PostService getPost() {
