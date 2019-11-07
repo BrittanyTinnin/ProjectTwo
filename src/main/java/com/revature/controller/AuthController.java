@@ -27,7 +27,8 @@ public class AuthController {
 		System.out.println(user.getUsername());
 		for(User u : us.getAllUsers()) {
 			System.out.println("inside for loop of login method in auth controller");
-			if(u.getUsername().equals(user.getUsername()) && u.getPassword().contentEquals(user.getPassword())) {
+			System.out.println(u);
+			if(u.getUsername().equals(user.getUsername()) && u.getPassword().equals(user.getPassword())) {
 				System.out.println("inside if statement of login auth controller");
 				System.out.println(u);
 				return u;
