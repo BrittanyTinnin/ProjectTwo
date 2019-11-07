@@ -14,13 +14,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="users")
@@ -56,10 +54,12 @@ public class User {
 	@Column(name = "date")
 	private Timestamp date;
 	
-	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private Set<Post> posts = new HashSet<>();
 
-	@OneToMany(mappedBy = "puser", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JsonIgnore
+	@OneToMany(mappedBy = "puser", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Photo> photos = new ArrayList<>();
 	
 	

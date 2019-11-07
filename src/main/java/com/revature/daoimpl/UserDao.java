@@ -48,6 +48,7 @@ public class UserDao {
 	}
 
 	public void update(User user) {
+		System.out.println("in user dao update method");
 		sesFact.getCurrentSession().update(user);
 	}
 	
