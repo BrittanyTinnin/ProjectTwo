@@ -10,11 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import com.revature.model.User;
 
-
 @Transactional
 @Repository
 public class UserDao {
-	
+
 	static {
 		try {
 			Class.forName("org.postgresql.Driver");
@@ -23,11 +22,9 @@ public class UserDao {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private SessionFactory sesFact;
-	
-	
-	
+
 	public UserDao() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -48,26 +45,26 @@ public class UserDao {
 	}
 
 	public void update(User user) {
+		System.out.println("in user dao update method");
 		sesFact.getCurrentSession().update(user);
 	}
-	
+
 	public void updateInfo(User t) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-
-	public User findBy(String username) {
-		return sesFact.getCurrentSession().get(User.class, username);
+	public User findByUsername(String username) {
+		System.out.println("inside findyByUsername in dao");
+//		return sesFact.getCurrentSession().get(User.class, username);
+		String hql = "from User u where u.username = :username";
+		return (User) sesFact.getCurrentSession().createQuery(hql).setParameter("username", username).getSingleResult();
 //		Session ses = HibernateUtil.getSession();
-//		String hql = "from User u where u.username = :username";
 //		Query q = ses.createQuery(hql);
 //		q.setParameter("username", username);
 //		return  (User) q.getSingleResult();
 	}
-	
 
-	
 	public void resetPassword(String username, String password) {
 //		Session ses = HibernateUtil.getSession();
 //		Transaction t = ses.beginTransaction();
@@ -78,11 +75,10 @@ public class UserDao {
 //		q.executeUpdate();
 //		t.commit();
 	}
-	
+
 	public User selectById(int id) {
 		return sesFact.getCurrentSession().get(User.class, id);
 	}
-	
 
 	public void delete(int id) {
 		sesFact.getCurrentSession().delete(selectById(id));

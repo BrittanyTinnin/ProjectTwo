@@ -1,6 +1,8 @@
 package com.revature.model;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,49 +19,46 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="posts")
+@Table(name = "posts")
 public class Post {
-	
+
 	@Id
 	@Column(name = "post_id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@Column(name = "date")
 	private Timestamp date;
-	
-	@NotNull(message="Post must contain some content")
+
 	@Column(name = "content")
 	private String content;
-	
-	@NotNull(message="Post must belong to some User")
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private User user;
-	
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="photo_id")
+
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "photo_id")
 	private Photo photo;
+
 
 	public Post() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Post(int id, Timestamp date, String content, User user) {
+
+	public Post(int id, Timestamp date, String content, User user, Photo photo) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.content = content;
 		this.user = user;
+		this.photo = photo;
 	}
 
-	public Post(Timestamp date, String content, User user) {
-		super();
-		this.date = date;
-		this.content = content;
-		this.user = user;
-	}
+
+
 
 	public int getId() {
 		return id;
@@ -93,6 +92,15 @@ public class Post {
 		this.user = user;
 	}
 
+	public Photo getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(Photo photo) {
+		this.photo = photo;
+	}
+
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

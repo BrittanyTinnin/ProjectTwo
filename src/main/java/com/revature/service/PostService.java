@@ -14,6 +14,7 @@ public class PostService {
 	private PostDao pd;
 	
 	public List<Post> getAll(){
+		System.out.println("inside getAll service");
 		return pd.selectAll();
 	}
 	
