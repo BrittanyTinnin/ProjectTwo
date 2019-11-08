@@ -21,36 +21,32 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
 
 	@Id
 	@Column(name = "user_id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(name = "email")
 	private String email;
-	
 
 	@Column(name = "username")
 	private String username;
-	
 
 	@Column(name = "user_password")
 	private String password;
-	
+
 	@Column(name = "breed")
 	private String breed;
-	
+
 	@Column(name = "gender")
 	private String gender;
-	
 
 	@Column(name = "birthday")
 	private Calendar birthday;
-	
-	
+
 	@Column(name = "date")
 	private Timestamp date;
 	
@@ -68,7 +64,20 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-
+	/**
+	 * Generates an object representation of a user(cat)
+	 * 
+	 * @param id       a unique identifier of a given user
+	 * @param email
+	 * @param username
+	 * @param password
+	 * @param breed    type of cat
+	 * @param gender
+	 * @param birthday
+	 * @param date     time the user joined the service
+	 * @param posts    a collection of posts made by the user
+	 * @param photos   a collection of photos posted by the user
+	 */
 	public User(int id, String email, String username, String password, String breed, String gender, Calendar birthday,
 			Timestamp date, Set<Post> posts, List<Photo> photos) {
 		super();
@@ -83,7 +92,6 @@ public class User {
 		this.posts = posts;
 		this.photos = photos;
 	}
-
 
 	public int getId() {
 		return id;
@@ -125,7 +133,6 @@ public class User {
 		this.breed = breed;
 	}
 
-
 	public String getGender() {
 		return gender;
 	}
@@ -157,19 +164,14 @@ public class User {
 	public void setPosts(Set<Post> posts) {
 		this.posts = posts;
 	}
-	
-	
+
 	public List<Photo> getPhotos() {
 		return photos;
 	}
 
-
 	public void setPhotos(List<Photo> photos) {
 		this.photos = photos;
 	}
-
-
-	
 
 	@Override
 	public int hashCode() {

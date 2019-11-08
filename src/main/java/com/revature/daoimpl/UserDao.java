@@ -23,27 +23,58 @@ public class UserDao {
 		}
 	}
 
+	/**
+	 * A SessionFactory object, to generate sessions and return/invalidate the
+	 * current session
+	 */
 	private SessionFactory sesFact;
 
+	/**
+	 * Generates the Dao object to connect to the user table in the database
+	 */
 	public UserDao() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Generates the Dao object to connect to the user table in the database with a
+	 * specified SessionFactory object
+	 * 
+	 * @param sesFact A sessionFactory object to be assigned to the Dao
+	 */
 	@Autowired
 	public UserDao(SessionFactory sesFact) {
 		super();
 		this.sesFact = sesFact;
 	}
 
+	/**
+	 * Returns a list of all users currently registered in the database
+	 * 
+	 * @return the List of User objects from the database user table
+	 */
 	public List<User> selectAll() {
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
 
+	/**
+	 * Adds a newly registered to the database, and sets them as the current user of
+	 * the application
+	 * 
+	 * @param u The object representation of the registering user
+	 */
 	public void create(User user) {
 		sesFact.getCurrentSession().save(user);
 	}
 
+	/**
+	 * Takes in a currently registered user, compares given information with stored
+	 * data, stores new information in database, and updates the information of the
+	 * session user
+	 * 
+	 * @param u A currently persisted user with updated data from database
+	 */
 	public void update(User user) {
 		System.out.println("in user dao update method");
 		sesFact.getCurrentSession().update(user);
@@ -54,6 +85,13 @@ public class UserDao {
 
 	}
 
+	/**
+	 * Takes in a username, compares with the database and returns the corresponding
+	 * user with the matching username or null if such user doesn't exist
+	 * 
+	 * @param username The username to be searched for
+	 * @return The user with the given username or null if no such user exists
+	 */
 	public User findByUsername(String username) {
 		System.out.println("inside findyByUsername in dao");
 //		return sesFact.getCurrentSession().get(User.class, username);
@@ -65,6 +103,9 @@ public class UserDao {
 //		return  (User) q.getSingleResult();
 	}
 
+	/**
+	 * @deprecated
+	 */
 	public void resetPassword(String username, String password) {
 //		Session ses = HibernateUtil.getSession();
 //		Transaction t = ses.beginTransaction();
@@ -76,10 +117,27 @@ public class UserDao {
 //		t.commit();
 	}
 
+	
+
+
+	/**
+	 * Takes in a unique identification number, compares with the database and
+	 * returns the corresponding user with the matching identification or null if
+	 * such user doesn't exist
+	 * 
+	 * @param id The unique id of the desired user
+	 * @return The user with the given id or null if no such user exists
+	 */
+
 	public User selectById(int id) {
 		return sesFact.getCurrentSession().get(User.class, id);
 	}
 
+	/**
+	 * Takes in a unique identification number and removes the user with
+	 * the matching identification number
+	 * @param id	the identification of the user to be removed
+	 */
 	public void delete(int id) {
 		sesFact.getCurrentSession().delete(selectById(id));
 	}
