@@ -13,7 +13,7 @@ public class UserService {
 
 	private UserDao ud;
 	
-	public List<User> getAll(){
+	public List<User> getAllUsers(){
 		return ud.selectAll();
 	}
 	
@@ -21,7 +21,13 @@ public class UserService {
 		return ud.selectById(id);
 	}
 	
+	public User getByUsername(String username) {
+		System.out.println("inside getByUsername");
+		return ud.findByUsername(username);
+	}
+	
 	public void update(User u) {
+		System.out.println("inside user service update method");
 		ud.update(u);
 	}
 	

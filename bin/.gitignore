@@ -44,3 +44,13 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+<<<<<<< HEAD
+
+# Maven
+.classpath
+.project
+.settings/
+target/
+applicationContext.xml
+=======
+>>>>>>> brittany
