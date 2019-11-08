@@ -27,11 +27,9 @@ public class Photo {
 	@Column(name = "date")
 	private Timestamp date;
 	
-	@NotNull(message="Photo must contain source URL for the photo")
 	@Column(name = "url")
 	private String url;
 	
-	@NotNull(message="Photo must have a posting user")
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User puser;
