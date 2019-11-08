@@ -23,7 +23,7 @@
 	<!-- this is your data source -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.postgresql.Driver"/>
-		<property name="url" value="jdbc:postgresql://postgresql-class.c4bzybwncbrh.us-east-2.rds.amazonaws.com:5432/project_two"/>
+		<property name="url" value="jdbc:postgresql://postgresql-database-1.c2ilx44fjskp.us-east-2.rds.amazonaws.com:5432/project_two"/>
 		<property name="username" value="ptwo_user"/>
 		<property name="password" value="password"/>
 	</bean>
