@@ -69,9 +69,27 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
+<<<<<<< Updated upstream
 
 	public User(int id, String email, String username, String password, String breed, String gender,
 			Calendar birthday, Timestamp date, Set<Post> posts, List<Photo> photos) {
+=======
+/**
+ * Generates an object representation of a user(cat)
+ * @param id		a unique identifier of a given user
+ * @param email		
+ * @param username
+ * @param password
+ * @param breed		type of cat
+ * @param gender
+ * @param birthday
+ * @param date		time the user joined the service
+ * @param posts		a collection of posts made by the user
+ * @param photos	a collection of photos posted by the user
+ */
+	public User(int id, String email, String username, String password, String breed, String gender, Calendar birthday,
+			Timestamp date, Set<Post> posts, List<Photo> photos) {
+>>>>>>> Stashed changes
 		super();
 		this.id = id;
 		this.email = email;
