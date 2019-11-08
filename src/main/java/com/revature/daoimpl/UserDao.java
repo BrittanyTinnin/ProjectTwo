@@ -23,13 +23,6 @@ public class UserDao {
 			e.printStackTrace();
 		}
 	}
-<<<<<<< Updated upstream
-	
-	private SessionFactory sesFact;
-	
-	
-	
-=======
 
 	/**
 	 * A SessionFactory object, to generate sessions and return/invalidate the
@@ -40,7 +33,6 @@ public class UserDao {
 	/**
 	 * Generates the Dao object to connect to the user table in the database
 	 */
->>>>>>> Stashed changes
 	public UserDao() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -93,11 +85,7 @@ public class UserDao {
 		
 	}
 
-<<<<<<< Updated upstream
 
-	public User findBy(String username) {
-		return sesFact.getCurrentSession().get(User.class, username);
-=======
 	/**
 	 * Takes in a username, compares with the database and returns the corresponding
 	 * user with the matching username or null if such user doesn't exist
@@ -110,7 +98,6 @@ public class UserDao {
 //		return sesFact.getCurrentSession().get(User.class, username);
 		String hql = "from User u where u.username = :username";
 		return (User) sesFact.getCurrentSession().createQuery(hql).setParameter("username", username).getSingleResult();
->>>>>>> Stashed changes
 //		Session ses = HibernateUtil.getSession();
 //		String hql = "from User u where u.username = :username";
 //		Query q = ses.createQuery(hql);
@@ -119,13 +106,9 @@ public class UserDao {
 	}
 	
 
-<<<<<<< Updated upstream
-	
-=======
 	/**
 	 * @deprecated
 	 */
->>>>>>> Stashed changes
 	public void resetPassword(String username, String password) {
 //		Session ses = HibernateUtil.getSession();
 //		Transaction t = ses.beginTransaction();
@@ -136,9 +119,9 @@ public class UserDao {
 //		q.executeUpdate();
 //		t.commit();
 	}
-<<<<<<< Updated upstream
+
 	
-=======
+
 
 	/**
 	 * Takes in a unique identification number, compares with the database and
@@ -148,7 +131,7 @@ public class UserDao {
 	 * @param id The unique id of the desired user
 	 * @return The user with the given id or null if no such user exists
 	 */
->>>>>>> Stashed changes
+
 	public User selectById(int id) {
 		return sesFact.getCurrentSession().get(User.class, id);
 	}
