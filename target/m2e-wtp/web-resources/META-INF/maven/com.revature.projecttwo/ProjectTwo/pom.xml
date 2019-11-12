@@ -11,15 +11,6 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
 	<dependencies>
-
-		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
-		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk-s3</artifactId>
-			<version>1.11.660</version>
-		</dependency>
-
-
 		<!-- Provides the IOC container -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -94,6 +85,5 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-
 	</dependencies>
 </project>

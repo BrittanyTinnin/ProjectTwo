@@ -52,31 +52,31 @@ UserService us = new UserService();
 	}
 
 	
-	@Test
-	public void testGetAllPhoto() {
-		assertTrue(ps.getAll().size()>=0);
-	}
+//	@Test
+//	public void testGetAllPhoto() {
+//		assertTrue(ps.getAll().size()>=0);
+//	}
+//
+//	@Test
+//	public void testGetById() {
+//		assertTrue(ps.getById(1) instanceof Photo);
+//	}
 
-	@Test
-	public void testGetById() {
-		assertTrue(ps.getById(1) instanceof Photo);
-	}
-
-	@Test
-	public void testUpdate() {
-//		assertTrue(ps.update(ph) instanceof Photo);
-		fail();
-	}
-
-	@Test
-	public void testCreate() {
-		fail();
-	}
-
-	@Test
-	public void testDelete() {
-	fail();
-	}
+//	@Test
+//	public void testUpdate() {
+////		assertTrue(ps.update(ph) instanceof Photo);
+//		fail();
+//	}
+//
+//	@Test
+//	public void testCreate() {
+//		fail();
+//	}
+//
+//	@Test
+//	public void testDelete() {
+//	fail();
+//	}
 
 
 	
